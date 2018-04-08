@@ -7,9 +7,14 @@
 
 ''' Importamos la libreria re de Python. '''
 import re
+import sys
+import time
+
+''' Asignamos el parametro introducido con el comando a la variable fil. '''
+fil=sys.argv[1]
 
 ''' Abrimos el fichero en modo de lectura y lo guardamos en la variable sequence. '''
-f = open("big.txt", "r")
+f = open(fil, "r")
 sequence = f.read()
 f.close()
 
@@ -36,12 +41,17 @@ def WordCount(sequence):
 ''' Creamos una lista vacia para guardar el resultado de la funcion WordCount. '''
 map_list = {}
 
+start = time.time()
+
 ''' Llamamos a la funcion que nos hara el HashMap. '''
 map_list = WordCount(sequence1)
 
 ''' Llamamos a la funcion que nos retorna el numero total de palabras que hay en la secuencia. '''
 wordcount =CountingWords(sequence1)
 
+finish = time.time()
+
 ''' Imprimimos los resultados para comprobar que lo hayamos hecho bien. '''
 print map_list
-print "Count words in a sequence: ", wordcount
+print "\nCount words in a sequence: ", wordcount
+print("\nTime in execution: --- %s seconds ---" % (finish-start))

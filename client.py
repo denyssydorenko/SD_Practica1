@@ -11,6 +11,7 @@ import os
 import sys
 import requests
 import time
+import shutil
 
 ''' Importamos las librerias que necesitamos de PyActor. '''
 from pyactor.context import set_context, create_host, Host, sleep, shutdown
@@ -132,6 +133,10 @@ if __name__ == "__main__":
 
         print "\nWordCount: ", ref_reducer.TotalWords()
         print("\nTime in execution: --- %s seconds ---" % (finish-start))
+
+        ''' Eliminamos la carpeta Files para que no nos produzca errores en un futuro. '''
+        os.chdir("..")
+        shutil.rmtree("Files")
 
         sleep(5)
         shutdown()
