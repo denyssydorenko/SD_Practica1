@@ -115,12 +115,13 @@ if __name__ == "__main__":
         fil1 = fil[:-4]
         sequence = ''
         sequence1 = ''
+        mapper = []
 
         ''' Cogemos todos los mappers necesarios y ejecutamos la funcion count_words(), a la cual le pasamos el texto que tiene que trabajar, la referencia del reducer y el numero total de mappers que ha indicado el usuario. '''
         for i in range(0,n):
             remote_host=registry.lookup('host'+str(i))
             if remote_host is not None:
-                mapper=remote_host.spawn('host'+str(i), 'client/Server')
+                mapper.append(remote_host.spawn('host'+str(i), 'client/Server'))
             port=port+1
 
         start = time.time()
@@ -128,7 +129,7 @@ if __name__ == "__main__":
         for j in range(0,n):
             sequence = requests.get("http://localhost:8000/"+fil1+"-"+tabla[j]).text
             sequence1 = re.sub('[^ a-zA-Z0-9]', ' ', sequence)
-            print mapper.count_words(sequence1, n, ref_reducer)
+            print mapper[j].count_words(sequence1, n, ref_reducer)
 
         finish = time.time()
 
