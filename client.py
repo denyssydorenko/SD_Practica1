@@ -48,6 +48,7 @@ class Server(object):
     def WordCount(self, sequence):
         map_list={}
         for word in sequence.split():
+            word.encode('utf-8')
             if word not in map_list:
                 map_list[word] = 1
             else:
