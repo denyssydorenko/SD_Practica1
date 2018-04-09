@@ -82,12 +82,12 @@ if __name__ == "__main__":
     ''' Si el segundo parametro introducido es superior a 5, entonces se muestra el mensaje de error. '''
     if n > 5:
         print "\nNo pueden haber mas de 5 mappers.\n"
-    sys.exit(0)
+        sys.exit(0)
 
     ''' Si el segundo parametro introducido es inferior a 1, entonces se muestra el mensaje de error. '''
     if n < 1:
         print "\nNo pueden haber menos de 1 mappers.\n"
-    sys.exit(0)
+        sys.exit(0)
 
     ''' Comprobamos que el fichero introducido por parametro exista, en caso contrario se muestra el mensaje de error. '''
     if os.path.isfile(fil):
@@ -146,4 +146,4 @@ if __name__ == "__main__":
 
     else:
         print "\nEl nombre del fichero introducido no existe.\n"
-    sys.exit(0)
+        sys.exit(0)
