@@ -19,9 +19,9 @@ from pyactor.exceptions import TimeoutError
 
 ''' Creamos la clase Server que utilizaremos a continuacion. '''
 class Server(object):
-    _ask = {'CountingWords', 'WordCount', 'reducer', 'count_words', 'TotalWords'}
-    _tell = []
-    _ref= {'count_words','reducer', 'TotalWords'}
+    _ask = {'WordCount', 'count_words', 'TotalWords','FinalMap'}
+    _tell = ['CountingWords', 'reducer']
+    _ref= {'count_words','reducer'}
 
     memoria=[]
     map_final={}
@@ -31,8 +31,11 @@ class Server(object):
     ''' Funcion que envia el Map de cada trozo de fichero junto con el numero de palabras que tiene. '''
     def count_words(self, sequence, i, reducer):
         map_list = {}
+        startw = time.time()
         map_list = self.WordCount(sequence)
         wc = self.CountingWords(sequence)
+        finishw = time.time()
+        print("\nTime in execution: --- %s seconds ---" % (finishw-startw))
         return reducer.reducer(i,map_list,wc)
 
     ''' Funcion que devuelve el numero total de palabras de una secuencia. '''
@@ -43,6 +46,10 @@ class Server(object):
     ''' Funcion que devuelve el numero total de palabras del fichero original. '''
     def TotalWords(self):
         return self.wordcount
+
+    ''' Funcion que devuelve el HashMap final. '''
+    def FinalMap(self):
+        return self.map_final
 
     ''' Funcion que devuelve el Map del trozo de secuencia que se le pasa por parametro. '''
     def WordCount(self, sequence):
@@ -61,6 +68,7 @@ class Server(object):
         self.memoria.append(map_l)
         self.wordcount=self.wordcount+wc
         if self.count>=i:
+            startr = time.time()
             for m in self.memoria:
                 if len(self.map_final)==0:
                     self.map_final=m
@@ -70,7 +78,8 @@ class Server(object):
                             self.map_final[k]=self.map_final.get(k)+m.get(k)
                         else:
                             self.map_final[k]=m.get(k)
-            return self.map_final
+            finishr = time.time()
+            print("\nTime in execution: --- %s seconds ---" % (finishr-startr))
 
 ''' Main del programa. '''
 if __name__ == "__main__":
@@ -134,10 +143,7 @@ if __name__ == "__main__":
 
         finish = time.time()
 
-        ''' Eliminamos la carpeta Files para que no nos produzca errores en un futuro. '''
-        os.chdir("..")
-        shutil.rmtree("Files")
-
+        print "\nMapFinal: ", ref_reducer.FinalMap()
         print "\nWordCount: ", ref_reducer.TotalWords()
         print("\nTime in execution: --- %s seconds ---" % (finish-start))
 
