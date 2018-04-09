@@ -18,9 +18,9 @@ from pyactor.exceptions import TimeoutError
 
 ''' Creamos la clase Server que utilizaremos a continuacion. '''
 class Server(object):
-    _ask = ['WordCount', 'CountingWords', 'TotalWords','FinalMap']
-    _tell = ['count_words', 'reducer']
-    _ref= ['count_words','reducer']
+    _ask = ['WordCount', 'CountingWords', 'TotalWords', 'FinalMap', 'count_words']
+    _tell = ['reducer']
+    _ref= ['count_words', 'reducer']
 
     memoria=[]
     map_final={}
