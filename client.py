@@ -11,6 +11,7 @@ import os
 import sys
 import requests
 import time
+import shutil
 
 ''' Importamos las librerias que necesitamos de PyActor. '''
 from pyactor.context import set_context, create_host, Host, sleep, shutdown
@@ -41,7 +42,7 @@ class Server(object):
 
     ''' Funcion que devuelve el numero total de palabras del fichero original. '''
     def TotalWords(self):
-    return self.wordcount
+        return self.wordcount
 
     ''' Funcion que devuelve el Map del trozo de secuencia que se le pasa por parametro. '''
     def WordCount(self, sequence):
@@ -132,6 +133,10 @@ if __name__ == "__main__":
             print mapper[j].count_words(sequence1, n, ref_reducer)
 
         finish = time.time()
+
+        ''' Eliminamos la carpeta Files para que no nos produzca errores en un futuro. '''
+        os.chdir("..")
+        shutil.rmtree("Files")
 
         print "\nWordCount: ", ref_reducer.TotalWords()
         print("\nTime in execution: --- %s seconds ---" % (finish-start))
