@@ -11,7 +11,6 @@ import os
 import sys
 import requests
 import time
-import shutil
 
 ''' Importamos las librerias que necesitamos de PyActor. '''
 from pyactor.context import set_context, create_host, Host, sleep, shutdown
