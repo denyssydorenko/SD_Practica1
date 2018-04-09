@@ -35,7 +35,7 @@ class Server(object):
         wc = self.CountingWords(sequence)
         finishw = time.time()
         print("\nTime in execution: --- %s seconds ---" % (finishw-startw))
-        return reducer.reducer(i,map_list,wc)
+        reducer.reducer(i,map_list,wc)
 
     ''' Funcion que devuelve el numero total de palabras de una secuencia. '''
     def CountingWords(self, sequence):
@@ -138,7 +138,7 @@ if __name__ == "__main__":
         for j in range(0,n):
             sequence = requests.get("http://localhost:8000/"+fil1+"-"+tabla[j]).text
             sequence1 = re.sub('[^ a-zA-Z0-9]', ' ', sequence)
-            print mapper[j].count_words(sequence1, n, ref_reducer)
+            mapper[j].count_words(sequence1, n, ref_reducer)
 
         finish = time.time()
 
@@ -151,4 +151,4 @@ if __name__ == "__main__":
 
     else:
         print "\nEl nombre del fichero introducido no existe.\n"
-        sys.exit(0)
+    sys.exit(0)
