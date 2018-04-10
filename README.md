@@ -40,10 +40,38 @@
 | 40pg2000.txt  |        |
 | 40big.txt         |        |
 
+**DATOS CON MAPPERS:**
 
+*Tabla 3 - Archivos Originales*
 
 | Archivo       | Núm. Mappers | Tiempo de Ejecución |
 | :------------: | :----------------------: | :----------------------: |
-| 40pg10.txt      |        |        |
-| 40pg2000.txt  |        |        |
-| 40big.txt         |        |        |
+| pg10.txt      | 5 |        |
+| pg2000.txt  | 5 |        |
+| big.txt         | 5 |        |
+
+*Tabla 4 - Archivos Originales x40*
+
+| Archivo       | Núm. Mappers | Tiempo de Ejecución |
+| :------------: | :----------------------: | :----------------------: |
+| 40pg10.txt      | 5 |        |
+| 40pg2000.txt  | 5 |        |
+| 40big.txt         | 5 |        |
+
+**SPEED-UP**
+
+*Tabla 5 – Archivos Originales*
+
+| Archivo       | Núm. Mappers | Speed-up |
+| :------------: | :----------------------: | :----------------------: |
+| pg10.txt      | 5 |        |
+| pg2000.txt  | 5 |        |
+| big.txt         | 5 |        |
+
+*Tabla 6 – Archivos Originales x40*
+
+| Archivo       | Núm. Mappers | Speed-up |
+| :------------: | :----------------------: | :----------------------: |
+| 40pg10.txt      | 5 |        |
+| 40pg2000.txt  | 5 |        |
+| 40big.txt         | 5 |        |
