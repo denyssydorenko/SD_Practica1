@@ -11,7 +11,7 @@
     (Comanda: python SD_p1_secuencial.py big.txt)
     - paso 3: Observamos el HashMap y el tiempo de ejecución del programa.
 
-### PASOS A SEGUIR PARA EL FUNCIONAMIENTO DEL PROGRAMA DINAMICO
+### PASOS A SEGUIR PARA EL FUNCIONAMIENTO DEL PROGRAMA CON MAPPERS
 
     - paso 1: Nos movemos al directorio donde se encuentra la práctica con todos 
     los archivos.
