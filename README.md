@@ -1,3 +1,7 @@
+### AUTORES
+    Eduard Forés Ferrer
+    Denys Sydorenko Sydorenko
+
 ### PASOS A SEGUIR PARA EL FUNCIONAMIENTO DEL PROGRAMA SECUENCIAL
 ```plain
 - paso 1: Nos movemos al directorio donde se encuentra la práctica con todos los archivos.
@@ -58,7 +62,7 @@
 | 40pg2000.txt  | 5 |        |
 | 40big.txt         | 5 |        |
 
-**SPEED-UP**
+**SPEED-UP:**
 
 *Tabla 5 – Archivos Originales*
 
