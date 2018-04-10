@@ -36,13 +36,13 @@
 | pg2000.txt  | 0.146966934204       |
 | big.txt         | 0.386319875717       |
 
-*Tabla 2 - Archivos Originales x40*
+*Tabla 2 - pg10.txt x40, pg2000.txt x40 y big.txt x20*
 
 | Archivo       | Tiempo de Ejecución (s) |
 | :------------: | :----------------------: |
 | 40pg10.txt      | 60.0956859589     |
-| 40pg2000.txt  |        |
-| 40big.txt         |        |
+| 40pg2000.txt  | 54.4339170456     |
+| 20big.txt         | 45.5418639183     |
 
 **DATOS CON MAPPERS:**
 
@@ -50,17 +50,17 @@
 
 | Archivo       | Núm. Mappers | Tiempo de Ejecución (s) |
 | :------------: | :----------------------: | :----------------------: |
-| pg10.txt      | 5 |        |
-| pg2000.txt  | 5 |        |
-| big.txt         | 5 |        |
+| pg10.txt      | 5 | 0.160958766937       |
+| pg2000.txt  | 5 | 0.0857508182526       |
+| big.txt         | 5 | 0.2255859375       |
 
-*Tabla 4 - Archivos Originales x40*
+*Tabla 4 - pg10.txt x40, pg2000.txt x40 y big.txt x20*
 
 | Archivo       | Núm. Mappers | Tiempo de Ejecución (s) |
 | :------------: | :----------------------: | :----------------------: |
-| 40pg10.txt      | 5 |        |
-| 40pg2000.txt  | 5 |        |
-| 40big.txt         | 5 |        |
+| 40pg10.txt      | 5 | 6.72120594978       |
+| 40pg2000.txt  | 5 | 5.51781082153       |
+| 20big.txt         | 5 | 4.86884784698       |
 
 **SPEED-UP:**
 
@@ -68,21 +68,21 @@
 
 | Archivo       | Núm. Mappers | Speed-up |
 | :------------: | :----------------------: | :----------------------: |
-| pg10.txt      | 5 |        |
-| pg2000.txt  | 5 |        |
-| big.txt         | 5 |        |
+| pg10.txt      | 5 | 1,765650042220042       |
+| pg2000.txt  | 5 | 1,713883752934846       |
+| big.txt         | 5 | 1,712517544303931       |
 
-*Tabla 6 – Archivos Originales x40*
+*Tabla 6 – pg10.txt x40, pg2000.txt x40 y big.txt x20*
 
 | Archivo       | Núm. Mappers | Speed-up |
 | :------------: | :----------------------: | :----------------------: |
-| 40pg10.txt      | 5 |        |
-| 40pg2000.txt  | 5 |        |
-| 40big.txt         | 5 |        |
+| 40pg10.txt      | 5 | 8,941205850248803       |
+| 40pg2000.txt  | 5 | 9,865129270688978       |
+| 20big.txt         | 5 | 9,353725018650614       |
 
 **OBSERVACIONES DEL SPEED-UP**
 
-    Viendo los resultados de los diferentes Speed-up con las diferentes pruebas con 
+    Viendo los resultados de los diferentes Speed-up con las diferentes pruebas de 
     los diferentes ficheros, observamos que el Speed-up es muy bueno ya que si el 
     Speed-up es mayor que 1 entonces podemos saber que hay una ligera mejoría y por 
     lo tanto podemos deducir que con 5 Mappers el MapReduce es mucho más rápido que 
