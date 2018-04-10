@@ -30,7 +30,7 @@
 
 *Tabla 1 - Archivos Originales*
 
-| Archivo       | Tiempo de Ejecución |
+| Archivo       | Tiempo de Ejecución (s) |
 | :------------: | :----------------------: |
 | pg10.txt      | 0.284196853638       |
 | pg2000.txt  | 0.146966934204       |
@@ -38,9 +38,9 @@
 
 *Tabla 2 - Archivos Originales x40*
 
-| Archivo       | Tiempo de Ejecución |
+| Archivo       | Tiempo de Ejecución (s) |
 | :------------: | :----------------------: |
-| 40pg10.txt      |        |
+| 40pg10.txt      | 60.0956859589     |
 | 40pg2000.txt  |        |
 | 40big.txt         |        |
 
@@ -48,7 +48,7 @@
 
 *Tabla 3 - Archivos Originales*
 
-| Archivo       | Núm. Mappers | Tiempo de Ejecución |
+| Archivo       | Núm. Mappers | Tiempo de Ejecución (s) |
 | :------------: | :----------------------: | :----------------------: |
 | pg10.txt      | 5 |        |
 | pg2000.txt  | 5 |        |
@@ -56,7 +56,7 @@
 
 *Tabla 4 - Archivos Originales x40*
 
-| Archivo       | Núm. Mappers | Tiempo de Ejecución |
+| Archivo       | Núm. Mappers | Tiempo de Ejecución (s) |
 | :------------: | :----------------------: | :----------------------: |
 | 40pg10.txt      | 5 |        |
 | 40pg2000.txt  | 5 |        |
@@ -79,3 +79,11 @@
 | 40pg10.txt      | 5 |        |
 | 40pg2000.txt  | 5 |        |
 | 40big.txt         | 5 |        |
+
+**OBSERVACIONES DEL SPEED-UP**
+
+    Viendo los resultados de los diferentes Speed-up con las diferentes pruebas con 
+    los diferentes ficheros, observamos que el Speed-up es muy bueno ya que si el 
+    Speed-up es mayor que 1 entonces podemos saber que hay una ligera mejoría y por 
+    lo tanto podemos deducir que con 5 Mappers el MapReduce es mucho más rápido que 
+    si se hace en Secuencial.
