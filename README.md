@@ -32,10 +32,18 @@
 | pg2000.txt  | 0.146966934204       |
 | big.txt         | 0.386319875717       |
 
-*Tabla 2 - Archivos Originales x5*
+*Tabla 2 - Archivos Originales x40*
 
 | Archivo       | Tiempo de Ejecución |
 | :------------: | :----------------------: |
-| 5pg10.txt      | 1.70674204826       |
-| 5pg2000.txt  | 1.70030808449       |
-| 5big.txt         | 2.40999698639       |
+| 40pg10.txt      |        |
+| 40pg2000.txt  |        |
+| 40big.txt         |        |
+
+
+
+| Archivo       | Núm. Mappers | Tiempo de Ejecución |
+| :------------: | :----------------------: | :----------------------: |
+| 40pg10.txt      |        |        |
+| 40pg2000.txt  |        |        |
+| 40big.txt         |        |        |
