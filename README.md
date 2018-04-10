@@ -23,9 +23,11 @@
 
 ### JUEGO DE PRUEBAS
 **DATOS SECUENCIAL:**
+
 *Tabla 1 - Archivos Originales*
+
 | Archivo       | Tiempo de Ejecución |
-| :-----------: | :----------------------: |
+| :------------: | :----------------------: |
 | pg10.txt      | 0.284196853638       |
-| pg2000.txt | 0.146966934204        |
+| pg2000.txt  | 0.146966934204       |
 | big.txt         | 0.386319875717       |
