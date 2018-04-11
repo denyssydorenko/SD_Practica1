@@ -18,51 +18,49 @@ from pyactor.exceptions import TimeoutError
 
 ''' Creamos la clase Server que utilizaremos a continuacion. '''
 class Server(object):
-    _ask = ['WordCount', 'CountingWords', 'TotalWords', 'FinalMap', 'count_words', 'returnTimeReducer', 'Compara']
-    _tell = ['reducer']
+    _ask = ['wordCount', 'countingWords', 'totalWords', 'finalMap', 'totalTime']
+    _tell = ['reducer', 'count_words', 'startTime']
     _ref= ['count_words', 'reducer']
 
     memoria=[]
     map_final={}
     wordcount=0
     count=0
-    timeMappers=[]
-    timeReducer=0
+    start=0
+    finish=0
 
     ''' Funcion que envia el Map de cada trozo de fichero junto con el numero de palabras que tiene. '''
-    def count_words(self, sequence, i, reducer):
+    def count_words(self, f, i, reducer):
+        sequence = requests.get("http://localhost:8000/"+f).text
+        sequence1 = re.sub('[^ a-zA-Z0-9]', ' ', sequence)
         map_list = {}
-        startw = time.time()
-        map_list = self.WordCount(sequence)
-        wc = self.CountingWords(sequence)
-        finishw = time.time()
-        print("\nTime in execution: --- %s seconds ---" % (finishw-startw))
-        timeMapper=(finishw-startw)
-        reducer.reducer(i, map_list, wc, timeMapper)
+        map_list = self.wordCount(sequence1)
+        wc = self.countingWords(sequence1)
+        reducer.reducer(i, map_list, wc)
 
     ''' Funcion que devuelve el numero total de palabras de una secuencia. '''
-    def CountingWords(self, sequence):
+    def countingWords(self, sequence):
         wordcount = len(sequence.split())
         return wordcount
 
     ''' Funcion que devuelve el numero total de palabras del fichero original. '''
-    def TotalWords(self):
+    def totalWords(self):
         return self.wordcount
 
     ''' Funcion que devuelve el HashMap final. '''
-    def FinalMap(self):
+    def finalMap(self):
         return self.map_final
 
-    ''' Funcion que devuelve el tiempo que tarda el reducer. '''
-    def returnTimeReducer(self):
-        return self.timeReducer
+    ''' Funcion que inicia el tiempo. '''
+    def startTime(self):
+        self.start=time.time()
 
-    ''' Funcion que devuelve el tiempo mas grande del numero de Mappers que ha seleccionado el usuario. '''
-    def Compara(self):
-        return max(self.timeMappers)
+    ''' Funcion que nos devuelve el tiempo total de ejecucion. '''
+    def totalTime(self):
+        return (self.finish-self.start)
 
     ''' Funcion que devuelve el Map del trozo de secuencia que se le pasa por parametro. '''
-    def WordCount(self, sequence):
+    def wordCount(self, sequence):
         map_list={}
         for word in sequence.split():
             word=word.encode('utf-8')
@@ -73,13 +71,11 @@ class Server(object):
         return map_list
 
     ''' Funcion que reduce todos los diccionarios a uno. La union de los Maps no se hara hasta que no haya acabado todos los mappers. '''
-    def reducer(self, i, map_l, wc, timeMapper):
-        self.timeMappers.append(timeMapper)
+    def reducer(self, i, map_l, wc):
         self.count=self.count+1
         self.memoria.append(map_l)
         self.wordcount=self.wordcount+wc
         if self.count>=i:
-            startr = time.time()
             for m in self.memoria:
                 if len(self.map_final)==0:
                     self.map_final=m
@@ -89,9 +85,7 @@ class Server(object):
                             self.map_final[k]=self.map_final.get(k)+m.get(k)
                         else:
                             self.map_final[k]=m.get(k)
-            finishr = time.time()
-            print("\nTime in execution 'REDUCER': --- %s seconds ---" % (finishr-startr))
-            self.timeReducer=(finishr-startr)
+            self.finish=time.time()
 
 ''' Main del programa. '''
 if __name__ == "__main__":
@@ -146,18 +140,18 @@ if __name__ == "__main__":
                 mapper.append(remote_host.spawn('host'+str(i), 'client/Server'))
             port=port+1
 
+        ref_reducer.startTime()
+
         for j in range(0,n):
-            sequence = requests.get("http://localhost:8000/"+fil1+"-"+tabla[j]).text
-            sequence1 = re.sub('[^ a-zA-Z0-9]', ' ', sequence)
-            mapper[j].count_words(sequence1, n, ref_reducer)
+            mapper[j].count_words(fil1+"-"+tabla[j], n, ref_reducer)
 
-        ''' Imprimos el HashMap final, el numero total de palabras del fichero y el tiempo de ejecucuion. '''
-        print "\nMapFinal: ", ref_reducer.FinalMap()
-        print "\nWordCount: ", ref_reducer.TotalWords() 
-        timeTotal=(ref_reducer.returnTimeReducer()+ref_reducer.Compara())
-        print("\nTime in execution: --- %s seconds ---" % timeTotal)
+        sleep(20)
+        ''' Imprimos el HashMap final, el numero total de palabras del fichero y el tiempo de ejecucuion.'''
+        print "\nMapFinal: ", ref_reducer.finalMap()
+        print "\nWordCount: ", ref_reducer.totalWords() 
+        print ("\nTime in execution: --- %s seconds --- " % ref_reducer.totalTime())
 
-        sleep(5)
+        sleep(20)
         shutdown()
 
     else:
