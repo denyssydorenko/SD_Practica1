@@ -67,8 +67,8 @@
 
 | Archivo       | Núm. Mappers | Tiempo de Ejecución (s) |
 | :------------: | :----------------------: | :----------------------: |
-| 20pg10.txt      | 5 |        |
-| 20pg2000.txt  | 5 |        |
+| 20pg10.txt      | 5 | 4,9804589308       |
+| 20pg2000.txt  | 5 | 1,3507389567       |
 | 20big.txt         | 5 | 15,0822649002       |
 
 **SPEED-UP:**
@@ -85,8 +85,8 @@
 
 | Archivo       | Núm. Mappers | Speed-up |
 | :------------: | :----------------------: | :----------------------: |
-| 40pg10.txt      | 5 |        |
-| 40pg2000.txt  | 5 |        |
+| 40pg10.txt      | 5 | 3,018426073876943       |
+| 40pg2000.txt  | 5 | 2,889745588019583       |
 | 20big.txt         | 5 | 3,019563985890215       |
 
 **OBSERVACIONES DEL SPEED-UP**
@@ -97,4 +97,5 @@
     server, etc.
     Sin embargo, podemos observar que el rendimiento con archivos 20 veces mayores a los
     originales, tiene un Speed-up mayor que 1 que significa que el rendimiento ha mejorado.
+    Podemos decir que el rendimiento ha mejorado casi 3 veces.
 
