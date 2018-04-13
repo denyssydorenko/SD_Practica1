@@ -8,10 +8,8 @@
 
 from pyactor.context import set_context, create_host, serve_forever
 
-
 class NotFound(Exception):
     pass
-
 
 class Registry(object):
     _ask = ['get_all', 'bind', 'lookup', 'unbind']
