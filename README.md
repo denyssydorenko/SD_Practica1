@@ -1,5 +1,6 @@
 ﻿### AUTORES
-
+Eduard Forés
+Denys Sydorenko
 
 ### PASOS A SEGUIR PARA EL FUNCIONAMIENTO DEL PROGRAMA SECUENCIAL
 
@@ -26,17 +27,11 @@
 
 ### DESCRIPCIÓN DE LA SOLUCIÓN
 - Hemos creado un programa que contiene una clase Server y un Main. En la comanda para inicializar el client.py le pasamos por parámetro el archivo.txt y el número de Mappers que vayamos a utilizar. Acto seguido, los asignamos a dos variables.
-
 - Primero, cogemos el archivo y lo partimos en tantos archivos como Mappers haya introducido el usuario. Cada fichero se renombra con un identificador único.
-
 - El siguiente paso es coger las referencias del host del Registry donde se encuentran los Mappers y el Reducer que han sido inicializados previamente.
-
 - Continuamos con la asignación de cada secuencia (secuencia limpia de caracteres innecesarios) a cada Mapper.
-
 - Uno de los últimos pasos es llamar a la función count_words() que se encarga de llamar a la función CountingWords, que nos devuelve el número total de palabras que hay en la secuencia seleccionada, y a la función WordCount() que nos devuelve el HashMap de la secuencia pasada por parámetro.
-
 - Para terminar, pasamos el número total de palabras de la secuencia y el HashMap a la función reducer() que se encarga de hacer el sumatorio de los diferentes números de palabras de cada secuencia y la concatenación de los diferentes HashMap.
-
 - Finalmente, imprimimos el HashMap, el número total de palabras del archivo introducido por parámetro y el tiempo de ejecución de nuestro programa por pantalla.
 
 ### JUEGO DE PRUEBAS
