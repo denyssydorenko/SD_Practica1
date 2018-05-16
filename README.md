@@ -1,5 +1,6 @@
 ﻿### AUTORES
-    Eduard Forés    Denys Sydorenko
+    Eduard Forés
+    Denys Sydorenko
 
 ### PASOS A SEGUIR PARA EL FUNCIONAMIENTO DEL PROGRAMA SECUENCIAL
 
